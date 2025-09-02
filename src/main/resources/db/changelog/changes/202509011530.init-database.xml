@@ -5,11 +5,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
-    <changeSet id="create-movie-sequence" author="vinicius">
+    <changeSet id="create-movie-award-sequence" author="vinicius">
         <createSequence sequenceName="movie_award_seq" startValue="1" incrementBy="1"/>
     </changeSet>
 
-    <changeSet id="create-movie-table" author="vinicius">
+    <changeSet id="create-movie-award-table" author="vinicius">
         <createTable tableName="movie_award">
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>

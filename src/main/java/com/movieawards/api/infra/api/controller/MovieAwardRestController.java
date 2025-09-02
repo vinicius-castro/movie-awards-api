@@ -1,6 +1,7 @@
 package com.movieawards.api.infra.api.controller;
 
 import com.movieawards.api.adapter.MovieAwardController;
+import com.movieawards.api.domain.entity.AwardsInterval;
 import com.movieawards.api.domain.entity.MovieAward;
 import com.movieawards.api.infra.repository.MovieAwardRepositoryImpl;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,11 @@ public class MovieAwardRestController {
     @GetMapping("/{code}")
     public ResponseEntity<MovieAward> get(@PathVariable String code) {
         return ResponseEntity.ok(new MovieAwardController(repository).searchMovieAwardByCode(code));
+    }
+
+    @GetMapping("/awards-interval")
+    public ResponseEntity<AwardsInterval> getAwardsInterval() {
+        return ResponseEntity.ok(new MovieAwardController(repository).searchAwardsInterval());
     }
 
     @DeleteMapping("/{code}")

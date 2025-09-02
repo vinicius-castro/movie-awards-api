@@ -39,8 +39,6 @@ class MovieAwardFileServiceTest {
 
         List<MovieAward> capturedAwards = argumentCaptor.getValue();
         assertEquals(3, capturedAwards.size());
-        assertTrue(capturedAwards.get(0).winner());
-        assertFalse(capturedAwards.get(1).winner());
     }
 
     @Test

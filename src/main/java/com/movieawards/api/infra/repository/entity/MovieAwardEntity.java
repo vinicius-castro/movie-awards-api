@@ -21,6 +21,7 @@ public class MovieAwardEntity {
 
     @Column(name = "award_year")
     private Integer year;
+    private String code;
     private String title;
     private String studios;
     private String producers;
@@ -28,7 +29,8 @@ public class MovieAwardEntity {
 
     protected MovieAwardEntity() {}
 
-    public MovieAwardEntity(Integer year, String title, String studios, String producers, Boolean winner) {
+    public MovieAwardEntity(String code, Integer year, String title, String studios, String producers, Boolean winner) {
+        this.code = code;
         this.year = year;
         this.title = title;
         this.studios = studios;
@@ -37,6 +39,7 @@ public class MovieAwardEntity {
     }
 
     public MovieAwardEntity(MovieAward movieAward) {
+        this.code = movieAward.code();
         this.year = movieAward.year();
         this.title = movieAward.title();
         this.studios = movieAward.studios();
@@ -45,6 +48,7 @@ public class MovieAwardEntity {
     }
 
     public Long getId() { return id; }
+    public String getCode() { return code; }
     public Integer getYear() { return year; }
     public String getTitle() { return title; }
     public String getStudios() { return studios; }

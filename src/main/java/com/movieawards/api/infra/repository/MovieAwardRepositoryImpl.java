@@ -35,17 +35,18 @@ public class MovieAwardRepositoryImpl implements MovieAwardRepository {
     }
 
     @Override
-    public void remove(Long id) {
-        entityRepository.deleteById(id);
+    public void remove(String code) {
+        entityRepository.deleteByCode(code);
     }
 
     @Override
-    public MovieAward get(Long id) {
-        var entity = entityRepository.findById(id);
+    public MovieAward getByCode(String code) {
+        var entity = entityRepository.findByCode(code);
 
         if (entity.isPresent()) {
             return entity
                     .map(e -> MovieAward.builder()
+                            .code(e.getCode())
                             .year(e.getYear())
                             .title(e.getTitle())
                             .studios(e.getStudios())
@@ -63,6 +64,7 @@ public class MovieAwardRepositoryImpl implements MovieAwardRepository {
                 .findAll()
                 .stream()
                 .map(e -> MovieAward.builder()
+                                .code(e.getCode())
                                 .year(e.getYear())
                                 .title(e.getTitle())
                                 .studios(e.getStudios())

@@ -1,8 +1,17 @@
 package com.movieawards.api.infra.repository;
 
 import com.movieawards.api.infra.repository.entity.MovieAwardEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface MovieAwardEntityRepository extends JpaRepository<MovieAwardEntity, Long> { }
+public interface MovieAwardEntityRepository extends JpaRepository<MovieAwardEntity, Long> {
+
+    Optional<MovieAwardEntity> findByCode(String code);
+
+    @Transactional
+    void deleteByCode(String code);
+}

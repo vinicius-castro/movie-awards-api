@@ -1,6 +1,7 @@
 package com.movieawards.api.domain.entity;
 
 public record MovieAward(
+        String code,
         Integer year,
         String title,
         String studios,
@@ -12,6 +13,7 @@ public record MovieAward(
     }
 
     public static final class Builder {
+        private String code;
         private Integer year;
         private String title;
         private String studios;
@@ -19,6 +21,11 @@ public record MovieAward(
         private Boolean winner;
 
         public Builder() {}
+
+        public Builder code(String code) {
+            this.code = code;
+            return this;
+        }
 
         public Builder year(Integer year) {
             this.year = year;
@@ -46,7 +53,7 @@ public record MovieAward(
         }
 
         public MovieAward build() {
-            return new MovieAward(year, title, studios, producers, winner);
+            return new MovieAward(code, year, title, studios, producers, winner);
         }
     }
 }

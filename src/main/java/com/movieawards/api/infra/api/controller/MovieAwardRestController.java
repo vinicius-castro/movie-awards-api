@@ -4,6 +4,7 @@ import com.movieawards.api.adapter.MovieAwardController;
 import com.movieawards.api.domain.entity.MovieAward;
 import com.movieawards.api.infra.repository.MovieAwardRepositoryImpl;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,9 +29,15 @@ public class MovieAwardRestController {
         return ResponseEntity.ok(new MovieAwardController(repository).listMovieAwards());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MovieAward> get(@PathVariable Long id) {
-        return ResponseEntity.ok(new MovieAwardController(repository).searchMovieAwardById(id));
+    @GetMapping("/{code}")
+    public ResponseEntity<MovieAward> get(@PathVariable String code) {
+        return ResponseEntity.ok(new MovieAwardController(repository).searchMovieAwardByCode(code));
+    }
+
+    @DeleteMapping("/{code}")
+    public ResponseEntity<Void> delete(@PathVariable String code) {
+        new MovieAwardController(repository).removeMovieAwardByCode(code);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping

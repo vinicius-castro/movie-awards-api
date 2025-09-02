@@ -8,7 +8,7 @@ public interface MovieAwardRepository {
 
     void create(MovieAward movieAward);
     void create(List<MovieAward> movieAward);
-    void remove(Long id);
-    MovieAward get(Long id);
+    void remove(String code);
+    MovieAward getByCode(String code);
     List<MovieAward> list();
 }

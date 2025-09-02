@@ -1,5 +1,6 @@
 package com.movieawards.api.application.usecase;
 
+import com.movieawards.api.application.exception.MovieAwardNotFoundException;
 import com.movieawards.api.application.repository.MovieAwardRepository;
 import com.movieawards.api.domain.entity.MovieAward;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,9 +9,9 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
-
 
 class ListMovieAwardsUseCaseTest {
 
@@ -35,4 +36,12 @@ class ListMovieAwardsUseCaseTest {
         assertTrue(result.containsAll(movieAwards));
     }
 
+    @Test
+    void shouldThrowMovieAwardNotFoundException() {
+        when(repository.list()).thenReturn(null);
+        assertThrows(MovieAwardNotFoundException.class, () -> useCase.execute(null));
+
+        when(repository.list()).thenReturn(new ArrayList<>());
+        assertThrows(MovieAwardNotFoundException.class, () -> useCase.execute(null));
+    }
 }

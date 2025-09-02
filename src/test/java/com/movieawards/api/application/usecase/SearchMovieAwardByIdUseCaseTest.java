@@ -13,21 +13,21 @@ import static org.mockito.Mockito.when;
 class SearchMovieAwardByIdUseCaseTest {
 
     private MovieAwardRepository repository;
-    private SearchMovieAwardByIdUseCase useCase;
+    private SearchMovieAwardByCodeUseCase useCase;
 
     @BeforeEach
     void setUp() {
         repository = Mockito.mock(MovieAwardRepository.class);
-        useCase = new SearchMovieAwardByIdUseCase(repository);
+        useCase = new SearchMovieAwardByCodeUseCase(repository);
     }
 
     @Test
     void shouldReturnMovieAwardWhenSearchingByAValidId() {
         var movieAward = MovieAward.builder().year(100).build();
 
-        when(repository.get(any())).thenReturn(movieAward);
+        when(repository.getByCode(any())).thenReturn(movieAward);
 
-        var result = useCase.execute(1L);
+        var result = useCase.execute("1L");
         assertEquals(movieAward, result);
     }
 }

@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 
@@ -28,8 +29,12 @@ class CreateMovieAwardUseCaseTest {
         var movieAward = MovieAward.builder().build();
         assertDoesNotThrow(() -> {
             var result = useCase.execute(movieAward);
-            assertEquals(movieAward, result);
+            assertEquals(movieAward.year(), result.year());
+            assertEquals(movieAward.title(), result.title());
+            assertEquals(movieAward.studios(), result.studios());
+            assertEquals(movieAward.producers(), result.producers());
+            assertEquals(movieAward.winner(), result.winner());
         });
-        verify(repository, only()).create(movieAward);
+        verify(repository, only()).create(any(MovieAward.class));
     }
 }

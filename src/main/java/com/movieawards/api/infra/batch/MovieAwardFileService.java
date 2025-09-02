@@ -1,5 +1,6 @@
 package com.movieawards.api.infra.batch;
 
+import com.movieawards.api.adapter.MovieAwardController;
 import com.movieawards.api.domain.entity.MovieAward;
 import com.movieawards.api.infra.repository.MovieAwardRepositoryImpl;
 import com.univocity.parsers.csv.CsvParser;
@@ -58,7 +59,7 @@ public class MovieAwardFileService {
                             .build();
                     batch.add(movieAward);
                 }
-                repository.create(batch);
+                new MovieAwardController(repository).createMovieAward(batch);
             }
         } catch (IOException e) {
             logger.error("m=createMovieAwards, message=error reading csv file, exception={}", e.getMessage(), e);

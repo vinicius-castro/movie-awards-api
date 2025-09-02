@@ -6,9 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,14 +30,7 @@ class MovieAwardFileServiceTest {
 
     @Test
     void shouldSaveDataWhenProcessValidCsvFile() {
-        var csvContent = """
-                year,title,studios,producers,winner
-                1980,Movie A,Studio X,Producer 1,true
-                1981,Movie B,Studio Y,Producer 2,
-                1982,Movie C,Studio Z,Producer 3,false""";
-        var tempFile = createTempCsvFile(csvContent);
-
-        movieAwardFileService.createMovieAwards(tempFile.toString());
+        movieAwardFileService.createMovieAwards("test_movie_list.csv");
 
         verify(repository, times(1)).create(anyList());
 
@@ -59,16 +49,5 @@ class MovieAwardFileServiceTest {
         assertThrows(RuntimeException.class, () -> {
             movieAwardFileService.createMovieAwards(invalidFile);
         });
-    }
-
-    private Path createTempCsvFile(String content) {
-        try {
-            var tempFile = Files.createTempFile("test", ".csv");
-            Files.writeString(tempFile, content);
-            tempFile.toFile().deleteOnExit();
-            return tempFile;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

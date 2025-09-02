@@ -7,6 +7,7 @@ import java.util.List;
 public interface MovieAwardRepository {
 
     void create(MovieAward movieAward);
+    void create(List<MovieAward> movieAward);
     void remove(Long id);
     MovieAward get(Long id);
     List<MovieAward> list();

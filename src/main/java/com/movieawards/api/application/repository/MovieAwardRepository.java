@@ -11,4 +11,5 @@ public interface MovieAwardRepository {
     void remove(String code);
     MovieAward getByCode(String code);
     List<MovieAward> list();
+    List<MovieAward> listWinners();
 }

@@ -74,4 +74,17 @@ public class MovieAwardRepositoryImpl implements MovieAwardRepository {
                 )
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<MovieAward> listWinners() {
+        return entityRepository
+                .findByWinnerTrue()
+                .stream()
+                .map(e -> MovieAward.builder()
+                        .year(e.getYear())
+                        .producers(e.getProducers())
+                        .build()
+                )
+                .collect(Collectors.toList());
+    }
 }

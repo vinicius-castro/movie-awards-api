@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.movieawards.api.application.usecase.SearchMovieAwardByIdUseCaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-09-02T02:08:20.482Z" hostname="vinicius-ubuntu" time="0.906">
+  <properties/>
+  <testcase name="shouldReturnMovieAwardWhenSearchingByAValidId()" classname="com.movieawards.api.application.usecase.SearchMovieAwardByIdUseCaseTest" time="0.906"/>
+  <system-out><![CDATA[23:08:21.352 [Test worker] INFO com.movieawards.api.application.usecase.UseCase -- m=execute, action=searching movie award, id=1
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/vicastro/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.17.7/fbf3d6d649ed37fc9e9c59480a05be0a26e3c2da/byte-buddy-agent-1.17.7.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

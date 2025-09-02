@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <changeSet id="create-movie-sequence" author="vinicius">
+        <createSequence sequenceName="movie_award_seq" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="create-movie-table" author="vinicius">
+        <createTable tableName="movie_award">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="award_year" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="studios" type="VARCHAR(100)"/>
+            <column name="producers" type="VARCHAR(255)"/>
+            <column name="winner" type="BOOLEAN"/>
+        </createTable>
+
+        <addDefaultValue
+                tableName="movie_award"
+                columnName="id"
+                defaultValueSequenceNext="movie_award_seq"/>
+    </changeSet>
+
+</databaseChangeLog>

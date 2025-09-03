@@ -4,6 +4,7 @@ import com.movieawards.api.adapter.MovieAwardController;
 import com.movieawards.api.domain.entity.AwardsInterval;
 import com.movieawards.api.domain.entity.MovieAward;
 import com.movieawards.api.infra.repository.MovieAwardRepositoryImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,6 +49,6 @@ public class MovieAwardRestController {
 
     @PostMapping
     public ResponseEntity<MovieAward> create(@RequestBody MovieAward movieAward) {
-        return ResponseEntity.ok(new MovieAwardController(repository).createMovieAward(movieAward));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new MovieAwardController(repository).createMovieAward(movieAward));
     }
 }

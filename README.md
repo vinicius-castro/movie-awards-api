@@ -59,7 +59,18 @@ Você pode executar o projeto de duas formas: usando o **Docker** ou através de
     ./gradlew bootRun
     ```
 
-3.  **Execução na IDE:**
+3.  **Execução de testes automatizados via Console:**
+    Navegue até o diretório raiz do projeto e execute o seguinte comando no terminal.
+
+    ```bash
+    ./gradlew clean build
+    ```
+    OU
+    ```bash
+    ./gradlew test
+    ```
+
+4.  **Execução na IDE:**
     Abra sua IDE e importe o projeto como um projeto Gradle. A IDE irá detectar o arquivo `build.gradle.kts` e configurar automaticamente o projeto e suas dependências. Em seguida, localize a classe principal da aplicação (geralmente com o método `main`) e execute-a.
 
 -----

@@ -11,6 +11,18 @@ O projeto foi construído utilizando as seguintes tecnologias:
 * **Linguagem:** Java 21
 * **Gerenciador de Projeto:** Gradle Kotlin
 * **Containerização:** Docker
+* **
+
+-----
+
+### Arquitetura do Projeto
+
+A arquitetura do projeto segue os princípios da **Clean Architecture**, visando a separação de responsabilidades e a independência das camadas. O design foi dividido em camadas lógicas:
+
+* **Camada de Domínio:** Contém as regras de negócio e as entidades do sistema. É a camada mais interna e não tem dependência de outras camadas.
+* **Camada de Aplicação:** Responsável por orquestrar o fluxo de dados e implementar as regras de negócio específicas da aplicação.
+* **Camada de Adapters:** Possui regras para direcionamento de usecases.
+* **Camada de Infraestrutura:** Lida com detalhes de implementação externos, como acesso ao banco de dados, comunicação com a API e frameworks.
 
 -----
 

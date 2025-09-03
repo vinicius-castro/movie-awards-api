@@ -11,7 +11,6 @@ O projeto foi construído utilizando as seguintes tecnologias:
 * **Linguagem:** Java 21
 * **Gerenciador de Projeto:** Gradle Kotlin
 * **Containerização:** Docker
-* **
 
 -----
 
